@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "python-mocking-workshop"
+version = "0.1.0"
+description = ""
+authors = ["Sam Bryant <sam.bryant@fil.com>"]
+readme = "README.md"
+packages = [{include = "python_mocking_workshop"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+requests = "^2.28.1"
+
+
+[tool.poetry.group.dev.dependencies]
+isort = "^5.10.1"
+black = "^22.8.0"
+pytest = "^7.1.3"
+responses = "^0.21.0"
+mypy = "^0.971"
+types-requests = "^2.28.10"
+Flake8-pyproject = "^1.1.0.post0"
+bandit = {extras = ["toml"], version = "^1.7.4"}
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.8.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203"]
+exclude = ["venv", "tests"]
+
+[tool.bandit]
+exclude_dirs = ["venv","tests","__"]
+
+[tool.mypy]
+exclude = [
+  '^tests',
+  '^__',
+  '_test/.py',
+  '^.venv'
+]
+
+follow_imports = "silent"
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_untyped_defs = true
